@@ -1,11 +1,13 @@
 from flask import Flask, render_template, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime, timedelta
+import os
 
 app = Flask(__name__)
 
 # --- SQLite 設定 ---
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///schedules.db"
+db_path = os.getenv("DB_PATH", "schedules.db")        # ← ローカルは既定値
+app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{db_path}"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
 
