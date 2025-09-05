@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>カレンダーアプリ</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body onload="loadCalendar();">
+
+<div class="container">
+<div class="header">
+<button id="prev-month" class="nav-button">&lt;</button>
+<h2 id="month-year"></h2>
+<button id="next-month" class="nav-button">&gt;</button>
+</div>
+<div class="calendar">
+<div class="day-name">日</div>
+<div class="day-name">月</div>
+<div class="day-name">火</div>
+<div class="day-name">水</div>
+<div class="day-name">木</div>
+<div class="day-name">金</div>
+<div class="day-name">土</div>
+</div>
+</div>
+
+<!-- 予定登録・編集用のモーダル -->
+
+<div id="schedule-modal" class="modal">
+<div class="modal-content">
+<h3 id="modal-title">新しい予定を登録</h3>
+<input type="text" id="schedule-title" placeholder="予定のタイトルを入力">
+<div class="date-and-time-inputs">
+<div class="input-group">
+<label for="start-date">開始日:</label>
+<input type="date" id="start-date">
+<label for="start-time">開始時刻:</label>
+<input type="time" id="start-time">
+</div>
+<div class="input-group">
+<label for="end-date">終了日:</label>
+<input type="date" id="end-date">
+<label for="end-time">終了時刻:</label>
+<input type="time" id="end-time">
+</div>
+</div>
+<div class="modal-buttons">
+<button id="close-button">キャンセル</button>
+<button id="delete-button" style="display:none;">削除</button>
+<button id="complete-button" style="display:none;">終了</button>
+<button id="save-button">保存</button>
+</div>
+</div>
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
